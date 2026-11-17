@@ -1,0 +1,14 @@
+services:
+  charts-creditos:
+    build: .
+    container_name: charts-creditos
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - CHARTS_DATA_DIR=/app/data
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "${PUERTO:-8794}:8794"
